@@ -21,116 +21,214 @@ namespace cAlgo
 
         #region Enums
 
-        // --> Eventuali enumeratori li mettiamo qui
+
+        public enum MyColors
+        {
+
+            AliceBlue,
+            AntiqueWhite,
+            Aqua,
+            Aquamarine,
+            Azure,
+            Beige,
+            Bisque,
+            Black,
+            BlanchedAlmond,
+            Blue,
+            BlueViolet,
+            Brown,
+            BurlyWood,
+            CadetBlue,
+            Chartreuse,
+            Chocolate,
+            Coral,
+            CornflowerBlue,
+            Cornsilk,
+            Crimson,
+            Cyan,
+            DarkBlue,
+            DarkCyan,
+            DarkGoldenrod,
+            DarkGray,
+            DarkGreen,
+            DarkKhaki,
+            DarkMagenta,
+            DarkOliveGreen,
+            DarkOrange,
+            DarkOrchid,
+            DarkRed,
+            DarkSalmon,
+            DarkSeaGreen,
+            DarkSlateBlue,
+            DarkSlateGray,
+            DarkTurquoise,
+            DarkViolet,
+            DeepPink,
+            DeepSkyBlue,
+            DimGray,
+            DodgerBlue,
+            Firebrick,
+            FloralWhite,
+            ForestGreen,
+            Fuchsia,
+            Gainsboro,
+            GhostWhite,
+            Gold,
+            Goldenrod,
+            Gray,
+            Green,
+            GreenYellow,
+            Honeydew,
+            HotPink,
+            IndianRed,
+            Indigo,
+            Ivory,
+            Khaki,
+            Lavender,
+            LavenderBlush,
+            LawnGreen,
+            LemonChiffon,
+            LightBlue,
+            LightCoral,
+            LightCyan,
+            LightGoldenrodYellow,
+            LightGray,
+            LightGreen,
+            LightPink,
+            LightSalmon,
+            LightSeaGreen,
+            LightSkyBlue,
+            LightSlateGray,
+            LightSteelBlue,
+            LightYellow,
+            Lime,
+            LimeGreen,
+            Linen,
+            Magenta,
+            Maroon,
+            MediumAquamarine,
+            MediumBlue,
+            MediumOrchid,
+            MediumPurple,
+            MediumSeaGreen,
+            MediumSlateBlue,
+            MediumSpringGreen,
+            MediumTurquoise,
+            MediumVioletRed,
+            MidnightBlue,
+            MintCream,
+            MistyRose,
+            Moccasin,
+            NavajoWhite,
+            Navy,
+            OldLace,
+            Olive,
+            OliveDrab,
+            Orange,
+            OrangeRed,
+            Orchid,
+            PaleGoldenrod,
+            PaleGreen,
+            PaleTurquoise,
+            PaleVioletRed,
+            PapayaWhip,
+            PeachPuff,
+            Peru,
+            Pink,
+            Plum,
+            PowderBlue,
+            Purple,
+            Red,
+            RosyBrown,
+            RoyalBlue,
+            SaddleBrown,
+            Salmon,
+            SandyBrown,
+            SeaGreen,
+            SeaShell,
+            Sienna,
+            Silver,
+            SkyBlue,
+            SlateBlue,
+            SlateGray,
+            Snow,
+            SpringGreen,
+            SteelBlue,
+            Tan,
+            Teal,
+            Thistle,
+            Tomato,
+            Transparent,
+            Turquoise,
+            Violet,
+            Wheat,
+            White,
+            WhiteSmoke,
+            Yellow,
+            YellowGreen
+
+        }
 
         #endregion
 
         #region Identity
 
-        /// <summary>
-        /// Nome del prodotto, identificativo, da modificare con il nome della propria creazione
-        /// </summary>
         public const string NAME = "Gold Pivot";
 
-        /// <summary>
-        /// La versione del prodotto, progressivo, utilie per controllare gli aggiornamenti se viene reso disponibile sul sito ctrader.guru
-        /// </summary>
         public const string VERSION = "1.0.0";
 
         #endregion
 
         #region Params
 
-        /// <summary>
-        /// Identità del prodotto nel contesto di ctrader.guru
-        /// </summary>
-        [Parameter(NAME + " " + VERSION, Group = "Identity", DefaultValue = "https://ctrader.guru/product/gold-pivot/")]
+        [Parameter(NAME + " " + VERSION, Group = "Identity", DefaultValue = "https://www.google.com/search?q=ctrader+guru+gold+pivot")]
         public string ProductInfo { get; set; }
 
-        /// <summary>
-        /// Il numero di giorni da visualizzare
-        /// </summary>
         [Parameter("Time Frame", Group = "Params", DefaultValue = 8, Step = 1)]
         public TimeFrame CandleTimeFrame { get; set; }
 
-        /// <summary>
-        /// Il numero di giorni da visualizzare
-        /// </summary>
         [Parameter("Candle Show", Group = "Params", DefaultValue = 1, MinValue = 1, MaxValue = 50, Step = 1)]
         public int CandleShow { get; set; }
 
-        /// <summary>
-        /// La zona da identificare
-        /// </summary>
         [Parameter("Show Label ?", Group = "Params", DefaultValue = true)]
         public bool ShowLabel { get; set; }
 
-        /// <summary>
-        /// Il Box, lo stile del bordo
-        /// </summary>
         [Parameter("Line Style", Group = "Styles", DefaultValue = LineStyle.DotsRare)]
         public LineStyle LineStyleBox { get; set; }
 
-        /// <summary>
-        /// Il Box, lo spessore del bordo
-        /// </summary>
         [Parameter("Tickness", Group = "Styles", DefaultValue = 1, MaxValue = 5, MinValue = 1, Step = 1)]
         public int TicknessBox { get; set; }
 
-        /// <summary>
-        /// Il Box, il colore del minimo
-        /// </summary>
-        [Parameter("Pivot Color", Group = "Styles", DefaultValue = "Gray")]
-        public string ColorPivot { get; set; }
+        [Parameter("Pivot Color", Group = "Styles", DefaultValue = MyColors.Gray)]
+        public MyColors ColorPivot { get; set; }
 
-        /// <summary>
-        /// Il Box, il colore del massimo
-        /// </summary>
-        [Parameter("Bullish Color", Group = "Styles", DefaultValue = "DodgerBlue")]
-        public string ColorBull { get; set; }
+        [Parameter("Bullish Color", Group = "Styles", DefaultValue = MyColors.DodgerBlue)]
+        public MyColors ColorBull { get; set; }
 
-        /// <summary>
-        /// Il Box, il colore del minimo
-        /// </summary>
-        [Parameter("Bearish Color", Group = "Styles", DefaultValue = "Red")]
-        public string ColorBear { get; set; }
-
-        #endregion
-
-        #region Property
+        [Parameter("Bearish Color", Group = "Styles", DefaultValue = MyColors.Red)]
+        public MyColors ColorBear { get; set; }
 
         #endregion
 
         #region Indicator Events
 
-        /// <summary>
-        /// Viene generato all'avvio dell'indicatore, si inizializza l'indicatore
-        /// </summary>
         protected override void Initialize()
         {
 
-            // --> Stampo nei log la versione corrente
             Print("{0} : {1}", NAME, VERSION);
 
-            // --> Se il timeframe è superiore o uguale al corrente devo uscire
-            if (_canDraw() && TimeFrame >= CandleTimeFrame)
+            if (CanDraw() && TimeFrame >= CandleTimeFrame)
                 Chart.DrawStaticText("Alert", string.Format("{0} : USE THIS INDICATOR ON TIMEFRAME LOWER {1}", NAME.ToUpper(), CandleTimeFrame.ToString().ToUpper()), VerticalAlignment.Center, HorizontalAlignment.Center, Color.Red);
 
         }
 
-        /// <summary>
-        /// Generato ad ogni tick, vengono effettuati i calcoli dell'indicatore
-        /// </summary>
-        /// <param name="index">L'indice della candela in elaborazione</param>
         public override void Calculate(int index)
         {
 
-            // --> Non esiste ancora un metodo per rimuovere l'indicatore dal grafico, quindi ci limitiamo a uscire
             if (TimeFrame >= CandleTimeFrame)
                 return;
 
-            // --> Disegnamo il Pivot
-            _drawPivot();
+            DrawPivot();
 
 
         }
@@ -139,14 +237,14 @@ namespace cAlgo
 
         #region Private Methods
 
-        private bool _canDraw()
+        private bool CanDraw()
         {
 
             return RunningMode == RunningMode.RealTime || RunningMode == RunningMode.VisualBacktesting;
 
         }
 
-        private int _getTimeFrameCandleInMinutes(TimeFrame MyCandle)
+        private int GetTimeFrameCandleInMinutes(TimeFrame MyCandle)
         {
 
             if (MyCandle == TimeFrame.Daily)
@@ -206,38 +304,28 @@ namespace cAlgo
 
         }
 
-        /// <summary>
-        /// Parto dalle ultime candele personalizzate e le disegno ogni volta
-        /// </summary>
-        /// <param name="index"></param>
-        private void _drawPivot()
+        private void DrawPivot()
         {
 
-            // --> Prelevo le candele di riferimento
             Bars barsCustom = MarketData.GetBars(CandleTimeFrame);
             int minimumBars = 3;
 
             int index = barsCustom.Count - 1;
 
-            // --> Potrei non avere un numero sufficiente di candele
             if (index < CandleShow || index < minimumBars)
                 return;
 
-            // --> eseguo un ciclo aretroso per disegnare le ultime candele
             for (int i = 0; i < CandleShow; i++)
             {
 
-                // --> Il numero di candele da visualizzare potrebbero essere troppe
                 try
                 {
 
                     DateTime thisCandle = barsCustom[index - i].OpenTime;
-                    DateTime nextCandle = (i == 0) ? thisCandle.AddMinutes(_getTimeFrameCandleInMinutes(CandleTimeFrame)) : barsCustom[index - i + 1].OpenTime;
+                    DateTime nextCandle = (i == 0) ? thisCandle.AddMinutes(GetTimeFrameCandleInMinutes(CandleTimeFrame)) : barsCustom[index - i + 1].OpenTime;
 
-                    // --> Prelevo il range della candela precedente, su di esso costruisco il pivot
                     double pivotRange = Math.Round(barsCustom[index - i - 1].High - barsCustom[index - i - 1].Low, Symbol.Digits);
 
-                    // --> Devo sapere se bullish o bearish, bullish se flat
                     bool lastIsBearish = barsCustom[index - i - 1].Close < barsCustom[index - i - 1].Open;
 
                     double pivot618 = Math.Round((pivotRange / 100) * 61.8, Symbol.Digits);
@@ -247,16 +335,17 @@ namespace cAlgo
                     double oppositeLastLevel = (!lastIsBearish) ? barsCustom[index - i - 1].Low + pivotRange : barsCustom[index - i - 1].High - pivotRange;
 
                     string rangeFlag = thisCandle.ToString();
-                    string lastLevelColor = (lastLevel < goldPivot) ? ColorBear : ColorBull;
-                    string oppositeLastLevelColor = (oppositeLastLevel < goldPivot) ? ColorBear : ColorBull;
+                    Color lastLevelColor = (lastLevel < goldPivot) ? Color.FromName(ColorBear.ToString("G")) : Color.FromName(ColorBull.ToString("G"));
+                    Color oppositeLastLevelColor = (oppositeLastLevel < goldPivot) ? Color.FromName(ColorBear.ToString("G")) : Color.FromName(ColorBull.ToString("G"));
 
-                    if (_canDraw()) {
+                    if (CanDraw())
+                    {
 
-                        Chart.DrawTrendLine("GoldPivot" + rangeFlag, thisCandle, goldPivot, nextCandle, goldPivot, Color.FromName(ColorPivot), TicknessBox, LineStyleBox);
-                        Chart.DrawTrendLine("LastLevel" + rangeFlag, thisCandle, lastLevel, nextCandle, lastLevel, Color.FromName(lastLevelColor), TicknessBox, LineStyleBox);
-                        Chart.DrawTrendLine("OppositeLastLevel" + rangeFlag, thisCandle, oppositeLastLevel, nextCandle, oppositeLastLevel, Color.FromName(oppositeLastLevelColor), TicknessBox, LineStyleBox);
-                                                
-                        if(ShowLabel && i == 0)
+                        Chart.DrawTrendLine("GoldPivot" + rangeFlag, thisCandle, goldPivot, nextCandle, goldPivot, Color.FromName(ColorPivot.ToString("G")), TicknessBox, LineStyleBox);
+                        Chart.DrawTrendLine("LastLevel" + rangeFlag, thisCandle, lastLevel, nextCandle, lastLevel, lastLevelColor, TicknessBox, LineStyleBox);
+                        Chart.DrawTrendLine("OppositeLastLevel" + rangeFlag, thisCandle, oppositeLastLevel, nextCandle, oppositeLastLevel, oppositeLastLevelColor, TicknessBox, LineStyleBox);
+
+                        if (ShowLabel && i == 0)
                         {
 
                             double bullishLevel = (lastLevel > oppositeLastLevel) ? lastLevel : oppositeLastLevel;
@@ -265,20 +354,19 @@ namespace cAlgo
                             double midBuyDistance = (bullishLevel - goldPivot) / 2;
                             double midSellDistance = (goldPivot - bearishLevel) / 2;
 
-                            Chart.DrawText("BuyZone", string.Format("Buy Zone ( {0} )", CandleTimeFrame), nextCandle, goldPivot + midBuyDistance, Color.FromName(ColorBull));
-                            Chart.DrawText("SellZone", string.Format("Sell Zone ( {0} )", CandleTimeFrame), nextCandle, goldPivot - midSellDistance, Color.FromName(ColorBear));
-                            
-                            Chart.DrawText("Bullish", string.Format("Bullish ( {0} {1} )", bullishLevel, CandleTimeFrame), nextCandle, bullishLevel, Color.FromName(ColorBull));
-                            Chart.DrawText("Bearish", string.Format("Bearish ( {0} {1} )", bearishLevel, CandleTimeFrame), nextCandle, bearishLevel, Color.FromName(ColorBear));
-                            Chart.DrawText("Pivot", string.Format( "Pivot ( {0} {1} )", goldPivot, CandleTimeFrame ), nextCandle, goldPivot, Color.FromName(ColorPivot));
+                            Chart.DrawText("BuyZone", string.Format("Buy Zone ( {0} )", CandleTimeFrame), nextCandle, goldPivot + midBuyDistance, Color.FromName(ColorBull.ToString("G"))).VerticalAlignment = VerticalAlignment.Center;
+                            Chart.DrawText("SellZone", string.Format("Sell Zone ( {0} )", CandleTimeFrame), nextCandle, goldPivot - midSellDistance, Color.FromName(ColorBear.ToString("G"))).VerticalAlignment = VerticalAlignment.Center;
+
+                            Chart.DrawText("Bullish", string.Format("Bullish ( {0} {1} )", bullishLevel, CandleTimeFrame), nextCandle, bullishLevel, Color.FromName(ColorBull.ToString("G"))).VerticalAlignment = VerticalAlignment.Center;
+                            Chart.DrawText("Bearish", string.Format("Bearish ( {0} {1} )", bearishLevel, CandleTimeFrame), nextCandle, bearishLevel, Color.FromName(ColorBear.ToString("G"))).VerticalAlignment = VerticalAlignment.Center;
+                            Chart.DrawText("Pivot", string.Format("Pivot ( {0} {1} )", goldPivot, CandleTimeFrame), nextCandle, goldPivot, Color.FromName(ColorPivot.ToString("G"))).VerticalAlignment = VerticalAlignment.Center;
 
                         }
-                        
+
 
                     }
 
-                }
-                catch
+                } catch
                 {
 
 
